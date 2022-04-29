@@ -910,14 +910,11 @@ Dependencies: ???
 int evaluateFunctionResult( double functionResult )
    {
     // initialize variables
-    int digitNum, result, columnMultiplier, digitValue;
-    int digitMatrix[ MATRIX_HEIGHT ][ MATRIX_WIDTH ];
-    int rowNum = 0, colNum = 0;
-    int evaluatedSubMatrix, termOne, termTwo, termThree, termFour;
-    OPERATORS operator = ADDITION;
+    int digitNum, digitValue, rowNum = 0, colNum = 0;
+
 // test
     int testReturn = 0;
-// test
+
 
     // get the absolute value of functionResult
     if( functionResult < 0 )
@@ -938,9 +935,6 @@ int evaluateFunctionResult( double functionResult )
           // remove the integer part from the function result
        functionResult = functionResult - digitValue;
 
-       // put the digit into the corresponding location of digitMartix
-       digitMatrix[ rowNum ][ colNum ] = digitValue;
-
        // increment the colIndex
        colNum++;
 
@@ -954,58 +948,13 @@ int evaluateFunctionResult( double functionResult )
           colNum = 0;
        }
 
-// test
        testReturn += digitValue;			// altered function to only add 9 digits
-// test
 
     }
-/*
-    // for every multiplier column
-    for( colNum = 0; colNum < MATRIX_WIDTH; colNum++ )
-    {
-       // get the multiplier from the column
-       columnMultiplier = digitMatrix[ 0 ][ colNum ];
 
-       // get the terms of the corrsponding elements
-       termOne = digitMatrix[ 1 ][ colNum ];
-       termTwo = digitMatrix[ 1 ][ ( colNum + 1 ) % MATRIX_WIDTH ];
-       termThree = digitMatrix[ 2 ][ colNum ];
-       termFour = digitMatrix[ 2 ][ ( colNum + 1 ) % MATRIX_WIDTH ];
-
-       // evaluate the terms (XOR multiplier instead of multiply to increase randomness) // modify: instead do the base 3 to base 8 to base 5 ... conversion
-       evaluatedSubMatrix = columnMultiplier * ( ( termOne - termThree ) - 
-                                                 ( termTwo - termFour ) );
-
-       // check the the operator is addition
-       if( operator == ADDITION )
-       {
-          // add the evaluated value to the result
-          result += evaluatedSubMatrix;
-
-          // set the operator to subtraction
-          operator = SUBTRACTION;
-
-       }
-
-       // otherwise (operator is subtraction)
-       else
-       {
-          // subtract the evaluated value from the result
-          result -= evaluatedSubMatrix;
-
-          // set the operator to addition
-          operator = ADDITION;
-
-       }
-
-    }
-*/
 // test
     return testReturn;
-// test
 
-    // return the result
-    return result;
    }
 
 
