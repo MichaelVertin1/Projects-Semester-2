@@ -3,13 +3,13 @@ Projects created during my second semester of experience coding.
 
 The intent of this project is to encrypt data in a way that every bit has a 50% chance of being 1 or 0. Due to seeding with time, there are 2^15, or 32768 unique encrypted forms of any given text file. I am planning to increase the number of possible forms.
 
-Use of function with random starting seed. For every bit in the file, the bit is flipped if the hundredths place of the function result is odd.
+1. Use of function with random starting seed. For every bit in the file, the bit is flipped if the hundredths place of the function result is odd.
 
-Added a bit marker. Each character is now represented by two characters. The bit marker (not present in the file) is found by calling the function 8 times. Each call describes where one bit of data is located. Spaces unoccupied by data are filled with random bits, also using the function.
+2. Added a bit marker. Each character is now represented by two characters. The bit marker (not present in the file) is found by calling the function 8 times. Each call describes where one bit of data is located. Spaces unoccupied by data are filled with random bits, also using the function.
 
-Created non-repeating pattern to increment the seed of the function. Previously the function's seed increased by one every call, which may cause repetition in the function's results.
+3. Created non-repeating pattern to increment the seed of the function. Previously the function's seed increased by one every call, which may cause repetition in the function's results.
 
-Rather than reading and writing the decrypted characters directly to/from the file, applied diagonal reading idea introduced in CS136 course. Twelve characters are placed into an array, called bitArray, and values are read/written by moving diagonally down-left through the array.
+4. Rather than reading and writing the decrypted characters directly to/from the file, applied diagonal reading idea introduced in CS136 course. Twelve characters are placed into an array, called bitArray, and values are read/written by moving diagonally down-left through the array.
 
 Problems Encountered: EOF and substitute character were causing my code to stop reading early. During the first three steps, I used a FAIL_BYTE to replace these characters, and would regenerate the data randomly until a valid character was attained. On step 4, bits can be accounted for individually. On the last bit of each character in the bitArray, if the other 7 bits could result in EOF or SUB_CHAR, I inserted the bit that prevented this, and skipped over the value of that bit.
 
